@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopify Supplier CSV to Product Catalog Normalizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">E-Commerce Automation Utility</div>
+      <h1>Shopify Supplier CSV to Catalog Normalizer</h1>
+      <p class="subtitle">Convert messy supplier spreadsheets into 100% compliant Shopify import CSVs. Auto-slug URL handles, normalize weights, fuzzy-match variant headers, and format prices in seconds.</p>
+      <div class="privacy-note">🔒 100% Client-Side. Your supplier data and product margins never leave your browser RAM.</div>
+    </header>
+
+    <main>
+      <!-- Preset & Upload Controls -->
+      <section class="upload-section">
+        <div class="preset-bar">
+          <label for="preset-select">Supplier Preset Template:</label>
+          <select id="preset-select">
+            <option value="auto">✨ Auto-Detect Headers</option>
+            <option value="faire">Faire Wholesale Export</option>
+            <option value="aliexpress">AliExpress / DSers Product Feed</option>
+            <option value="doba">Doba Drop Ship Inventory</option>
+          </select>
+        </div>
+
+        <div id="drop-zone" class="drop-zone">
+          <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+          </svg>
+          <h3>Drop your Supplier CSV here</h3>
+          <p>or click to browse your computer</p>
+          <input type="file" id="file-input" accept=".csv,.tsv,.txt" hidden>
+        </div>
+      </section>
+
+      <!-- Mapping Panel (Revealed after upload) -->
+      <section id="mapping-panel" class="mapping-panel hidden">
+        <div class="mapping-header">
+          <h3>Confirm Column Mappings</h3>
+          <span style="font-size:0.85rem; color:var(--text-muted);">Adjust fuzzy matches if needed</span>
+        </div>
+        <div id="mapping-grid" class="mapping-grid"></div>
+        <div style="margin-top: 1rem; display: flex; gap: 1rem; align-items: center;">
+          <button id="btn-apply-mapping" class="btn btn-primary">⚡ Generate Shopify Catalog</button>
+        </div>
+      </section>
+
+      <!-- Stats Panel -->
+      <section id="results-controls" class="results-controls hidden">
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">Products Found</div>
+            <div id="stat-total-products" class="stat-value">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Shopify Headers Mapped</div>
+            <div id="stat-mapped-cols" class="stat-value">0 / 24</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Weights Normalized</div>
+            <div id="stat-weights-normalized" class="stat-value">Grams</div>
+          </div>
+        </div>
+
+        <div class="action-bar" style="margin-top: 1rem;">
+          <button id="btn-export-shopify-csv" class="btn btn-primary">
+            📥 Download Shopify Import CSV
+          </button>
+          <button id="btn-reset" class="btn btn-outline">
+            🔄 Clear & New File
+          </button>
+        </div>
+      </section>
+
+      <!-- Preview Table -->
+      <section id="preview-section" class="preview-section hidden">
+        <div class="table-header">
+          <h2>Shopify Catalog Preview (First 25 SKUs)</h2>
+        </div>
+        <div class="table-container">
+          <table id="preview-table">
+            <thead>
+              <tr id="table-head-row"></tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- License Modal -->
+    <div id="license-modal" class="modal hidden">
+      <div class="modal-card">
+        <h3>🚀 Unlock Unlimited Catalog Normalization</h3>
+        <p>This supplier sheet contains <strong id="modal-row-count">0</strong> products. The free trial converts the first 25 rows.</p>
+        <p>Unlock the Pro License for <strong>$19 one-time</strong> to convert unlimited products, save custom presets, and export massive feeds forever.</p>
+        <div class="license-input-group" style="display:flex; gap:0.5rem; justify-content:center;">
+          <input type="text" id="license-key-input" placeholder="Enter Gumroad license key" style="padding:0.5rem; border-radius:6px; border:1px solid var(--border); background:var(--bg-card); color:#fff;">
+          <button id="btn-activate-license" class="btn btn-primary">Activate</button>
+        </div>
+        <div class="modal-footer" style="margin-top:1rem; display:flex; justify-content:space-between; align-items:center;">
+          <a href="https://gumroad.com" target="_blank" style="color:var(--accent-emerald); font-size:0.9rem;">Get a License Key ($19) →</a>
+          <button id="btn-close-modal" class="btn-outline" style="padding:0.4rem 0.8rem;">Continue Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Shopify Supplier CSV Normalizer • Built for High-Volume Dropshippers & Retailers</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

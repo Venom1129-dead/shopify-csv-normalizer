@@ -1,0 +1,44 @@
+{
+  "faire": {
+    "name": "Faire Wholesale Export",
+    "mappings": {
+      "Title": "Product Name",
+      "Body (HTML)": "Description",
+      "Vendor": "Brand",
+      "Variant SKU": "SKU",
+      "Variant Price": "Wholesale Price",
+      "Variant Compare At Price": "Retail Price",
+      "Variant Inventory Qty": "Quantity Available",
+      "Variant Grams": "Weight (lbs)",
+      "Image Src": "Product Image 1"
+    }
+  },
+  "aliexpress": {
+    "name": "AliExpress / DSers Product Feed",
+    "mappings": {
+      "Title": "product_name",
+      "Body (HTML)": "detail_description",
+      "Vendor": "store_name",
+      "Variant SKU": "sku_code",
+      "Variant Price": "supply_price",
+      "Variant Compare At Price": "suggested_price",
+      "Variant Inventory Qty": "stock_count",
+      "Variant Grams": "shipping_weight",
+      "Image Src": "main_image_url"
+    }
+  },
+  "doba": {
+    "name": "Doba Drop Ship Inventory",
+    "mappings": {
+      "Title": "Item Title",
+      "Body (HTML)": "Long Description",
+      "Vendor": "Supplier Name",
+      "Variant SKU": "Item ID",
+      "Variant Price": "Drop Ship Price",
+      "Variant Compare At Price": "MSRP",
+      "Variant Inventory Qty": "Qty Available",
+      "Variant Grams": "Weight LBS",
+      "Image Src": "Primary Image"
+    }
+  }
+}
